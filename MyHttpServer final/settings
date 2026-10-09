@@ -1,0 +1,14 @@
+{
+    "Server": {
+        "Host": "127.0.0.1",
+        "Port": "8888",
+        "Path": "connection"
+    },
+    "Pages": {
+        "steam": "Steam/Steam.html",
+        "Searcher": "Searcher/Searcher.html",
+        "Satisfactory": "Satisfactory/Satisfactory.html",
+        "login": "Login_Form/login.html"
+
+    }
+}
