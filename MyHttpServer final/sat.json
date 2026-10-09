@@ -1,23 +1,14 @@
 {
-    "runtimeTarget": {
-    "name": ".NETCoreApp,Version=v10.0",
-    "signature": ""
+    "Server": {
+        "Host": "127.0.0.1",
+        "Port": "8888",
+        "Path": "connection"
     },
-    "compilationOptions": {},
-    "targets": {
-    ".NETCoreApp,Version=v10.0": {
-        "ConsoleApp1/1.0.0": {
-        "runtime": {
-            "ConsoleApp1.dll": {}
-        }
-        }
-    }
-    },
-    "libraries": {
-    "ConsoleApp1/1.0.0": {
-        "type": "project",
-        "serviceable": false,
-        "sha512": ""
-        }
+    "Pages": {
+        "steam": "Steam/Steam.html",
+        "Searcher": "Searcher/Searcher.html",
+        "Satisfactory": "Satisfactory/Satisfactory.html",
+        "login": "Login_Form/login.html"
+
     }
 }
