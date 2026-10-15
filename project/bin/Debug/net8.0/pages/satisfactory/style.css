@@ -1,0 +1,209 @@
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    background-color: #eeeeee;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Noto Sans", system-ui, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-variation-settings:
+    "wdth" 100;
+}
+
+li {
+    display: list-item;
+    unicode-bidi: isolate;
+}
+
+/* HEADER */
+
+.header {
+    width: 100%;
+    height: 35px;
+
+    background: #000538;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding-left: 11.9px;
+    padding-right: 11.9px;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    z-index: 1000;
+}
+
+/* LEFT */
+
+.header-left {
+    height: 100%;
+    padding: calc((var(35px) - 25px) / 2) 0;
+
+    display: flex;
+    align-items: center;
+}
+
+.header-left a {
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+}
+
+.header-left img {
+    display: block;
+    height: 25px;
+    width: auto;
+}
+
+
+/* RIGHT */
+
+.header-right {
+    height: 19px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 0.75em;
+
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
+}
+
+.header-right li {
+    display: flex;
+    align-items: center;
+}
+
+
+.satisfactory-icon{
+    display: flex;
+    justify-content: center;
+    margin-top: 35px;
+    height:96px;
+    opacity: 1;
+}
+
+.satisfactory-icon img{
+    max-height: 100%;
+}
+
+.icon-item a {
+    padding: 6.4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 20px;
+}
+
+.icon-item svg {
+    display: block;
+    width: 20px;
+    height: 20px;
+    fill: white;
+    object-fit: contain;
+}
+
+
+/* LINKS */
+
+.header-right a {
+    color: white;
+
+    font-family: "Nunito", sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+
+    text-decoration: none;
+}
+
+/* Create account */
+
+.account-link {
+    padding-left: 10.5px;
+    border-left: 1px solid #2e3460
+}
+
+/* Log in */
+
+.login-link {
+    padding: 0;
+}
+
+.account-link:hover,
+.login-link:hover {
+    text-decoration: underline;
+}
+
+
+.left-panel{
+    font-family: "Noto Sans", system-ui, sans-serif;
+    padding-left: 0.5em;
+    float:left;
+    font-size: 100%;
+    width: 10em;
+}
+.left-portret{
+    display: block;
+    box-sizing: content-box;    
+    margin: 0px 8px 10px;
+    padding: 4px 0px;
+    width: 144px;
+    border-radius: 10px;
+    outline: rgb(0, 0, 0) none 3px;
+    background-color: #e0e0e0;
+    opacity: 0.95;
+}
+.left-potret-header{
+    text-align: center;
+    border-bottom: 1px solid #fa9549;
+    padding: 0.25em 0;
+    margin: 0px 0.25em;
+    font-size: 14.4px;
+    font-weight: 400;
+}
+.left-portret-div{
+    margin: 0 0.5em;
+}
+.left-portret-div ul{
+    padding-inline-start:0px;
+    list-style: none;
+    margin: 0;
+    padding-top: 0.3em;
+}
+.left-portret-div li{
+    text-align: start;
+    margin: 0;
+    padding: 0.25em 0;
+    font-size: 12px;
+    font-weight: bold; 
+    line-height: 1.125em;
+    word-wrap: break-word;
+}
+
+.left-portret-div a {
+  color: #0645ad;
+  text-decoration: none;
+}
+
+.left-portret-div a:visited {
+  color: #0645ad;      
+}
+
+.left-portret-div a:hover {
+  text-decoration: underline;
+}
