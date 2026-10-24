@@ -1,9 +1,14 @@
 ﻿using System;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Net;
+using System.Net.Mime;
+using System.Runtime.InteropServices;
+using System.Text;
 using System.Threading.Tasks;
+using System.Xml.XPath;
+using project;
 
 
 class program
@@ -30,7 +35,6 @@ class program
             catch
             {
                 Console.WriteLine($"ошибка при получении запроса");
-
             }
             
         }
@@ -41,46 +45,67 @@ class program
         HttpListenerRequest request = context.Request;
         HttpListenerResponse response = context.Response;
 
-        string pageName = request.QueryString["./pages"];
-        if (string.IsNullOrWhiteSpace(pageName))
+        string path = request.Url.AbsolutePath;
+
+        string filePath;
+
+        if (path == "/")
         {
-            pageName = "search";
+            filePath = Path.Combine(FolderName, "search.html");
+            Console.WriteLine(path);
         }
-
-        string filePath = Path.Combine(FolderName, $"{pageName}.html");
-
-        string path = request.RawUrl;
-
-        if ((string.IsNullOrEmpty(path) || path == "/") ==false )
+        else
         {
-            pageName = path;
-            filePath = Path.Combine(FolderName, path.Substring(1), $"{path.Substring(1)}.html");
-            FileInfo finfo = new FileInfo(path);
-            string Fullp = Path.GetFullPath(finfo.FullName);
-            Console.WriteLine($"поиск файла: {finfo}, полный путь: {Fullp}");
+            string name = path.Trim('/');
+            string directory = Path.Combine(FolderName, name);
+            string[] files = Directory.GetFiles(
+                directory,
+                $"{name}.*"
+            );
+
+            if (files.Length == 0)
+            {
+                await SendResponseAsync(
+                    response,
+                    $"<h1>Страница '{name}' не найдена!</h1>",
+                    HttpStatusCode.NotFound
+                );
+
+                return;
+            }
+            filePath = files[0];
         }
 
         if (!File.Exists(filePath))
         {
-            await SendResponseAsync(response, $"<h1>Страница '{pageName}.html' не найдена!</h1>", HttpStatusCode.NotFound);
+            await SendResponseAsync(response, $"<h1>Страница '{path}.{Path.GetExtension(path)}' не найдена!</h1>", HttpStatusCode.NotFound);
             return;
         }
-        string htmlContent = await File.ReadAllTextAsync(filePath);
+        string Content = await File.ReadAllTextAsync(filePath);
 
 
-        await SendResponseAsync(response, htmlContent, HttpStatusCode.OK);
+        await SendResponseAsync(response, filePath, HttpStatusCode.OK);
     }
-    static async Task SendResponseAsync(HttpListenerResponse response, string content, HttpStatusCode statusCode)
+    static async Task SendResponseAsync(HttpListenerResponse response, string filePath, HttpStatusCode statusCode)
     {
+        string extension = Path.GetExtension(filePath);
+
         response.StatusCode = (int)statusCode;
 
-    byte[] buffer = Encoding.UTF8.GetBytes(content);
+        if (!ContentTypes.Types.TryGetValue(
+            extension,
+            out string contentType))
+        {
+            contentType = "application/octet-stream";
+        }
 
-        response.ContentType = "text/css";
-        response.ContentType = "text/html; charset=utf-8";
+        response.ContentType = contentType;
+
+        byte[] buffer = await File.ReadAllBytesAsync(filePath);
+
         response.ContentLength64 = buffer.Length;
 
-    await response.OutputStream.WriteAsync(buffer, 0, buffer.Length);
+        await response.OutputStream.WriteAsync(buffer, 0, buffer.Length);
 
     response.OutputStream.Close();
     }
