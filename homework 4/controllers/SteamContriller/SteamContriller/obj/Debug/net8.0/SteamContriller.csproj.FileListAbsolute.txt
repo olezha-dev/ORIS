@@ -1,4 +1,0 @@
-C:\Users\Kurieitibu\Desktop\ORI\controllers\SteamContriller\SteamContriller\obj\Debug\net8.0\SteamContriller.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\Kurieitibu\Desktop\ORI\controllers\SteamContriller\SteamContriller\obj\Debug\net8.0\SteamContriller.AssemblyInfoInputs.cache
-C:\Users\Kurieitibu\Desktop\ORI\controllers\SteamContriller\SteamContriller\obj\Debug\net8.0\SteamContriller.AssemblyInfo.cs
-C:\Users\Kurieitibu\Desktop\ORI\controllers\SteamContriller\SteamContriller\obj\Debug\net8.0\SteamContriller.csproj.CoreCompileInputs.cache
