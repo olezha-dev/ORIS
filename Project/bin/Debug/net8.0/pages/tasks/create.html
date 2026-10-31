@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Создание задачи</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+    <h1>Создать задачу</h1>
+
+    <form method="POST" action="/tasks/create">
+
+        <label>
+            Название задачи:
+            <input
+                type="text"
+                name="title"
+                minlength="3"
+                maxlength="80"
+                required
+            >
+        </label>
+
+        <label>
+            Приоритет:
+            <select name="priority">
+                <option value="low">Низкий</option>
+                <option value="medium">Средний</option>
+                <option value="high">Высокий</option>
+            </select>
+        </label>
+
+        <button type="submit">
+            Создать
+        </button>
+
+    </form>
+
+    <a href="/tasks">Вернуться к задачам</a>
+
+</body>
+</html>
