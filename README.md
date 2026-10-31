@@ -1,5 +1,7 @@
-# ORIS (ветка: olezha-dev-patch-1)
+# ORIS (ветка: olezha-dev-patch-k)
 
+## Project 
+    -контрольная
 ## project 
     -переписанный с нуля руками сервер
         -в ветке olezha-dev-patch-1 рабочий сервер, читающий только .html файлы. Через строку запроса можно перемещаться между страницами search.html/steam.html/satisfactory.html. Выводит 404.html при ошибке.
