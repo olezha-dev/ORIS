@@ -1,5 +1,7 @@
 # ORIS
 
+## Kontrolnaya
+    - находится на ветке olezha-dev-patch-k
 ## Homework 3/Homework 4 
     -сделано к срокам
     -структурно плохой код
